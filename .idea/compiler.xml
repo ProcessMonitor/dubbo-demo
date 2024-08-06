@@ -11,5 +11,6 @@
         <module name="dubbo-demo-consumer" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel target="11" />
   </component>
 </project>
