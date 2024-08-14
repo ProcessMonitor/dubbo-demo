@@ -1,3 +1,5 @@
+package Interface;
+
 import lombok.Data;
 
 import java.util.Date;
@@ -6,7 +8,7 @@ import java.util.Date;
  * 模拟数据库entity的测试类
  */
 @Data
-public class MapperTestFruitDataBaseTableEntity {
+public class FruitDataEntityT {
     /**
      * 主键id
      */

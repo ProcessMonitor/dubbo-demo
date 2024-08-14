@@ -8,9 +8,9 @@ import org.mapstruct.factory.Mappers;
 import java.util.List;
 
 @Mapper
-public interface MapperFruit {
+public interface FruitMap {
 
-    MapperFruit mapper = Mappers.getMapper(MapperFruit.class);
+    FruitMap mapper = Mappers.getMapper(FruitMap.class);
 
     @Mappings({
             @Mapping(source = "fruitId", target = "fruitId"),
