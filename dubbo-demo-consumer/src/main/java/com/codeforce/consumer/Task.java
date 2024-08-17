@@ -4,9 +4,11 @@ package com.codeforce.consumer;
 import com.codeforce.SomeDubboService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
+@Component
 public class Task implements CommandLineRunner {
 
     @DubboReference
@@ -15,13 +17,13 @@ public class Task implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         String result = someDubboService.hello("codeforce");
-        System.out.println("consumer invoke dubbo service : " + result);
+        System.out.println("receive result ======> : " + result);
         new Thread(() -> {
             while (true) {
                 try {
                     Thread.sleep(1000);
                     System.out.println(new Date() + " consumer invoke dubbo service : "
-                            + someDubboService.hello("codeforce"));
+                            + someDubboService.hello("fuck !"));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                     Thread.currentThread().interrupt();

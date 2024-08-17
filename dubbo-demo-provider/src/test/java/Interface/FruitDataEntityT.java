@@ -1,5 +1,6 @@
 package Interface;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.Date;
@@ -8,6 +9,7 @@ import java.util.Date;
  * 模拟数据库entity的测试类
  */
 @Data
+@Builder
 public class FruitDataEntityT {
     /**
      * 主键id
