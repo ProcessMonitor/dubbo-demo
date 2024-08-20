@@ -16,14 +16,14 @@ public interface FruitMap {
 //    FruitMap mapper = Mappers.getMapper(FruitMap.class);
     FruitMap INSTANCE = Mappers.getMapper(FruitMap.class);
 
-//    @Mappings({
-    @Mapping(source = "fruitId", target = "fruitId")
-    @Mapping(source = "fruitName", target = "fruitName")
-    @Mapping(source = "fruitSale", target = "fruitSale")
-    @Mapping(source = "localIcon", target = "localIcon")
-    @Mapping(source = "spareIcon", target = "spareIcon")
-    @Mapping(source = "updateTime", target = "updateTime")
-//    })
+    @Mappings({
+        @Mapping(source = "fruitId", target = "fruitId"),
+        @Mapping(source = "fruitName", target = "fruitName"),
+        @Mapping(source = "fruitSale", target = "fruitSale"),
+        @Mapping(source = "localIcon", target = "localIcon"),
+        @Mapping(source = "spareIcon", target = "spareIcon"),
+        @Mapping(source = "updateTime", target = "updateTime")
+    })
     FruitVo1 pojo2vo1(FruitDataEntityT fruit);
     FruitDataEntityT vo2pojo1(FruitVo1 FruitVo1);
 
