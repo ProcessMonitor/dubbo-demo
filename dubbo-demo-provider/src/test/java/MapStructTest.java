@@ -39,7 +39,9 @@ public class MapStructTest {
                 .itemReportCode("123report").instrumentCode("123instr").build();
         ResultRequestVO resultRequestVO = RequestDtoMapper.INSTANCE
                 .requestDto2RequestRequest(resultRequestDtoT);
+        ResultRequestDtoT dtoT = RequestDtoMapper.INSTANCE.requestRequest2Dto(resultRequestVO);
         System.out.println(resultRequestVO);
+        System.out.println(dtoT);
     }
 
 //    @Test
