@@ -1,8 +1,15 @@
 dubbo:
   application:
     name: dubbo-demo-comsumer
+    qos-port: 22223
   protocol:
     name: dubbo
     port: -1
   registry:
-    address: nacos://127.0.0.1:8848?username=nacos&password=nacos&namespace=2152126c-2067-4dc5-b9fb-83f57d25ecea
+    address: nacos://${nacos.address}?username=${nacos.username}&password=${nacos.password}&namespace=${nacos.namespace}
+
+nacos:
+  username: nacos
+  password: nacos
+  address: 127.0.0.1:8848
+  namespace: dev

@@ -4,10 +4,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.Month;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoField;
 import java.util.Date;
 
@@ -67,5 +65,19 @@ public class LocalDateT {
         int dateYear = date.getYear();
 
         System.out.println(dateYear + "-" + dateMonth + "-" + dateHours);
+    }
+
+    @Test
+    void localDateFormat() {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        Date date = new Date();
+        System.out.println("原始localDateTime : " + localDateTime);
+        System.out.println("原始的date : " + date);
+        // Format后
+        String formatDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+        String formatLocalDateTime = localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+
+        System.out.println("格式化后localDateTime : " + formatLocalDateTime);
+        System.out.println("格式化后date : " + formatDate);
     }
 }
