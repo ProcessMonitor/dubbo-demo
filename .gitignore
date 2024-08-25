@@ -1,0 +1,4 @@
+/dubbo-demo-provider/target/
+/dubbo-demo-consumer/target/
+/dubbo-demo-api/target/
+/.idea
