@@ -77,6 +77,16 @@ public class LocalDateT {
         String formatDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
         String formatLocalDateTime = localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 
+//        local 转 date
+        // 创建一个LocalDateTime实例
+
+        // 将LocalDateTime转换为Date
+        Date newdate = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+
+        // 打印转换后的Date对象
+        System.out.println("LocalDateTime: " + localDateTime);
+        System.out.println("Converted Date: " + newdate);
+
         System.out.println("格式化后localDateTime : " + formatLocalDateTime);
         System.out.println("格式化后date : " + formatDate);
     }

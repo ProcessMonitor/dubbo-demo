@@ -1,8 +1,9 @@
 import org.junit.jupiter.api.Test;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
+import java.rmi.ServerException;
+import java.util.concurrent.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MultipleThreadT {
 
@@ -65,6 +66,45 @@ public class MultipleThreadT {
             return ;
         }finally {
             System.out.println("计算结束 finally");
+        }
+    }
+
+
+    @Test
+    void CompletableFutureTest() {
+        CompletableFuture<Void> future = CompletableFuture.supplyAsync(() -> {
+            System.out.println("future working start ... ");
+            try {
+                TimeUnit.SECONDS.sleep(3);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return "OK";
+        }).thenAccept(result -> {
+            String lowerCase = result.toLowerCase();
+            System.out.println(" 拿到 OK 的结果 : " + lowerCase);
+        });
+
+        System.out.println(" Do something else");
+        future.join();
+    }
+
+    @Test
+    void CombineResultTest() throws ServerException {
+        try {
+            CompletableFuture<Void> future = CompletableFuture.runAsync(() ->
+                    System.out.println("hello runAsync!")
+            );
+            future.get();// 输出 "hello!"
+            CompletableFuture<String> future2 = CompletableFuture.supplyAsync(() ->
+                    "hello supply !"
+            );
+            future2.get();
+            assertEquals("hello supply !", future2.get());
+            CompletableFuture.allOf(future, future2).get(1, TimeUnit.SECONDS);
+
+        } catch (Exception e) {
+            throw new ServerException("超时" , e);
         }
     }
 }
