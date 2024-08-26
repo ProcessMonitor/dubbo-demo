@@ -23,6 +23,7 @@ public class MultipleThreadT {
         });
         t2.start();
     }
+
     @Test
     void MultipleThreadTest2() throws ExecutionException, InterruptedException {
         FutureTask futureTask = new FutureTask(new Callable() {
@@ -42,6 +43,28 @@ public class MultipleThreadT {
         if(futureTask.isDone()) {
             String result = (String) futureTask.get();
             System.out.println(result);
+        }
+    }
+
+    @Test
+    void MultipleThreadTest3() {
+        try {
+            FutureTask<Integer> futureTask = new FutureTask<>(() -> {
+                int result = 0;
+                for (int i = 0; i < 10; i++) {
+                    result += i;
+                }
+                return result;
+            });
+            Thread thread = new Thread(futureTask);
+            thread.start();
+            System.out.println("计算结果为：" + futureTask.get());
+        }catch (Exception e){
+            System.out.println("计算出错");
+            e.printStackTrace();
+            return ;
+        }finally {
+            System.out.println("计算结束 finally");
         }
     }
 }

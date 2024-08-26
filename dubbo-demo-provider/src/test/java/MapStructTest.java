@@ -1,13 +1,13 @@
-import Interface.FruitDataEntityT;
+import Interface.RequestDtoMapper;
+import Vo.ResultRequestVO;
+import entity.FruitDataEntityT;
 import Interface.FruitMap;
 import Vo.FruitVo1;
 import com.codeforce.provider.ProviderApplication;
+import entity.ResultRequestDtoT;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
+import org.springframework.beans.BeanUtils;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.annotation.Resource;
 
 
 /**
@@ -29,6 +29,17 @@ public class MapStructTest {
         FruitVo1 fruitVo1_2 = FruitMap.INSTANCE.pojo2vo1(fruit);
         System.out.println(fruitVo1);
         System.out.println(fruitVo1_2);
+        FruitDataEntityT nFruit = FruitDataEntityT.builder().build();
+        BeanUtils.copyProperties(fruit, nFruit);
+        System.out.println(nFruit);
+    }
+    @Test
+    void pojo_to_vo_field_different() {
+        ResultRequestDtoT resultRequestDtoT = ResultRequestDtoT.builder()
+                .itemReportCode("123report").instrumentCode("123instr").build();
+        ResultRequestVO resultRequestVO = RequestDtoMapper.INSTANCE
+                .requestDto2RequestRequest(resultRequestDtoT);
+        System.out.println(resultRequestVO);
     }
 
 //    @Test
