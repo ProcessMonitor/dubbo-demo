@@ -2,11 +2,9 @@ package Interface;
 
 import Vo.FruitVo1;
 import Vo.FruitVo2;
+import entity.FruitDataEntityT;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
