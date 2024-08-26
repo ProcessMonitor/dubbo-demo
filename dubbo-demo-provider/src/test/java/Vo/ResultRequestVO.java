@@ -1,9 +1,11 @@
 package Vo;
 
 import lombok.Builder;
+import lombok.Data;
 
 import java.util.Date;
 
+@Data
 @Builder
 public class ResultRequestVO {
     private String itemReportCode;
